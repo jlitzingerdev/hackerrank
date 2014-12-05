@@ -1,1 +1,5 @@
 Solution 2 (C++) was submitted, accepted, and earned full credit.
+
+
+However, from reading, after submission, this could likely be done with an XOR, eliminating the space/time associated
+with a set.
