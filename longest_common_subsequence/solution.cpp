@@ -37,23 +37,23 @@ int  lcs_length(const std::vector<int>& A, const std::vector<int>& B,
 
     /**
      * c[i][j] is the length of the LCS of subproblems to that point
-     */
     for (const auto& row : table) {
         for (const auto& c: row) {
             std::cout << c << " ";
         }
         std::cout << std::endl;
     }
+    */
 
     return table[A.size()][B.size()];
 }
 
 void reconstruct_lcs(const std::vector<std::vector<int>>& table,
         const std::vector<int>& A,
-        std::vector<int>::size_type i,
         std::vector<int>::size_type j,
         std::vector<int>& lcs)
 {
+    std::vector<int>::size_type i = A.size();
     while ((i != 0) && (j != 0)) {
         if (table[i-1][j] >= table[i][j]) {
             --i;
@@ -75,9 +75,8 @@ int main(int argc, char *argv[])
     std::vector<int> lcs;
 
     std::vector<std::vector<int>> table{A.size() + 1}; //This is to match algorithm conceptually, FIXME
-    std::cout << "LCS len: " << lcs_length(A, B, table) << std::endl;
-    reconstruct_lcs(table, A, A.size(), B.size(), lcs);
-    std::cout << "LCS: ";
+    lcs_length(A, B, table);
+    reconstruct_lcs(table, A, B.size(), lcs);
     for (auto val: lcs) {
         std::cout << val << " ";
     }
