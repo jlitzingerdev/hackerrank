@@ -1,6 +1,12 @@
 # hackerrank
-Solutions for various problems on Hackerrank.  The license for the code is
-MIT (as shown) unless otherwise stated.  As the whole point of these little problems
+Solutions for various problems on Hackerrank.
+The license for the code is MIT (as shown) unless otherwise stated.
+
+The license on the challenge PDFs included is whatever is specified or whatever
+the author put on the challenge in the first place, I am not attempting to modify
+their license in any way.
+
+As the whole point of these little problems
 is to exercise my brain, I tend to re-implement them but use common references
 to learn the algorithm behind the solution.  Some examples:
 
