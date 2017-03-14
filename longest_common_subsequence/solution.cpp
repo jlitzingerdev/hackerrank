@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <utility>
+#include <iterator>
+#include<algorithm>
 
 int  lcs_length(const std::vector<int>& A, const std::vector<int>& B,
         std::vector<std::vector<int>> &table)
@@ -52,18 +54,18 @@ void reconstruct_lcs(const std::vector<std::vector<int>>& table,
         std::vector<int>::size_type j,
         std::vector<int>& lcs)
 {
-    if ((i == 0) || (j == 0)) {
-        return;
+    while ((i != 0) && (j != 0)) {
+        if (table[i-1][j] >= table[i][j]) {
+            --i;
+        } else if (table[i][j-1] > table[i][j]) {
+            --j;
+        } else {
+            lcs.push_back(A[i-1]);
+            --i;
+            --j;
+        }
     }
-
-    if (table[i-1][j] >= table[i][j]) { 
-        reconstruct_lcs(table, A, i-1, j, lcs);
-    } else if (table[i][j-1] > table[i][j]) {
-        reconstruct_lcs(table, A, i, j-1, lcs);
-    } else {
-        reconstruct_lcs(table, A, i-1, j-1, lcs);
-        lcs.push_back(A[i-1]);
-    }
+    std::reverse(std::begin(lcs), std::end(lcs));
 }
 
 int main(int argc, char *argv[])
